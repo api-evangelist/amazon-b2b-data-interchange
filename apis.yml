@@ -1,0 +1,17 @@
+aid: amazon-b2b-data-interchange
+name: Amazon B2b Data Interchange
+description: >-
+  Amazon B2b Data Interchange provides API capabilities.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis: []
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
