@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "b2bi": "https://aws.amazon.com/b2b-data-interchange/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Profile": "b2bi:Profile",
+    "profileId": "b2bi:profileId",
+    "profileArn": "b2bi:profileArn",
+    "businessName": "schema:legalName",
+    "phone": "schema:telephone",
+    "email": "schema:email",
+    "logging": "b2bi:logging",
+    "logGroupName": "b2bi:logGroupName",
+
+    "Partnership": "b2bi:Partnership",
+    "partnershipId": "b2bi:partnershipId",
+    "partnershipArn": "b2bi:partnershipArn",
+    "tradingPartnerId": "b2bi:tradingPartnerId",
+    "capabilities": "b2bi:capabilities",
+
+    "Capability": "b2bi:Capability",
+    "capabilityId": "b2bi:capabilityId",
+    "capabilityArn": "b2bi:capabilityArn",
+    "capabilityDirection": "b2bi:capabilityDirection",
+    "configuration": "b2bi:configuration",
+    "inputLocation": "b2bi:inputLocation",
+    "outputLocation": "b2bi:outputLocation",
+    "instructionsDocuments": "b2bi:instructionsDocuments",
+
+    "Transformer": "b2bi:Transformer",
+    "transformerId": "b2bi:transformerId",
+    "transformerArn": "b2bi:transformerArn",
+    "mappingTemplate": "b2bi:mappingTemplate",
+    "fileFormat": "b2bi:fileFormat",
+    "ediType": "b2bi:ediType",
+    "status": "b2bi:status",
+
+    "S3Location": "b2bi:S3Location",
+    "bucketName": "b2bi:bucketName",
+    "key": "b2bi:s3Key",
+
+    "X12Details": "b2bi:X12Details",
+    "transactionSet": "b2bi:transactionSet",
+    "version": "b2bi:version",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modifiedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

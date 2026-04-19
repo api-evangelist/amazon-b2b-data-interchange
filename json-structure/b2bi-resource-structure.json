@@ -1,0 +1,114 @@
+{
+  "title": "AWS B2B Data Interchange Resource Structure",
+  "description": "Structural documentation for all key resources in the AWS B2B Data Interchange API",
+  "resources": {
+    "Profile": {
+      "description": "Represents your organization as an EDI sender or receiver",
+      "identifiers": ["profileId", "profileArn"],
+      "fields": {
+        "profileId": { "type": "string", "required": true, "readOnly": true },
+        "profileArn": { "type": "string", "required": true, "readOnly": true },
+        "name": { "type": "string", "required": true },
+        "businessName": { "type": "string", "required": true },
+        "phone": { "type": "string", "required": true },
+        "email": { "type": "string", "required": false },
+        "logging": { "type": "enum[ENABLED|DISABLED]", "required": true },
+        "logGroupName": { "type": "string", "required": false, "readOnly": true },
+        "createdAt": { "type": "datetime", "required": true, "readOnly": true },
+        "modifiedAt": { "type": "datetime", "required": false, "readOnly": true }
+      },
+      "relationships": {
+        "hasMany": ["Partnership"]
+      },
+      "limits": {
+        "maxPerAccount": 5
+      }
+    },
+    "Partnership": {
+      "description": "Connection between a profile and a trading partner",
+      "identifiers": ["partnershipId", "partnershipArn"],
+      "fields": {
+        "partnershipId": { "type": "string", "required": true, "readOnly": true },
+        "partnershipArn": { "type": "string", "required": true, "readOnly": true },
+        "profileId": { "type": "string", "required": true },
+        "name": { "type": "string", "required": true },
+        "email": { "type": "string", "required": true },
+        "phone": { "type": "string", "required": false },
+        "capabilities": { "type": "array[string]", "required": true },
+        "tradingPartnerId": { "type": "string", "required": false, "readOnly": true },
+        "createdAt": { "type": "datetime", "required": true, "readOnly": true },
+        "modifiedAt": { "type": "datetime", "required": false, "readOnly": true }
+      },
+      "relationships": {
+        "belongsTo": ["Profile"],
+        "referencesMany": ["Capability"]
+      }
+    },
+    "Capability": {
+      "description": "Defines an EDI transformation pipeline between S3 locations",
+      "identifiers": ["capabilityId", "capabilityArn"],
+      "fields": {
+        "capabilityId": { "type": "string", "required": true, "readOnly": true },
+        "capabilityArn": { "type": "string", "required": true, "readOnly": true },
+        "name": { "type": "string", "required": true },
+        "type": { "type": "enum[edi]", "required": true },
+        "configuration": {
+          "type": "object",
+          "required": true,
+          "nested": {
+            "edi": {
+              "capabilityDirection": { "type": "enum[INBOUND|OUTBOUND]", "required": true },
+              "type": { "type": "EdiType", "required": true },
+              "inputLocation": { "type": "S3Location", "required": true },
+              "outputLocation": { "type": "S3Location", "required": true },
+              "transformerId": { "type": "string", "required": true }
+            }
+          }
+        },
+        "instructionsDocuments": { "type": "array[S3Location]", "required": false },
+        "createdAt": { "type": "datetime", "required": true, "readOnly": true },
+        "modifiedAt": { "type": "datetime", "required": false, "readOnly": true }
+      },
+      "relationships": {
+        "referencesOne": ["Transformer"]
+      }
+    },
+    "Transformer": {
+      "description": "Defines how EDI documents are converted using mapping templates",
+      "identifiers": ["transformerId", "transformerArn"],
+      "fields": {
+        "transformerId": { "type": "string", "required": true, "readOnly": true },
+        "transformerArn": { "type": "string", "required": true, "readOnly": true },
+        "name": { "type": "string", "required": true },
+        "status": { "type": "enum[active|inactive]", "required": true },
+        "fileFormat": { "type": "enum[XML|JSON|NOT_USED]", "required": false },
+        "mappingTemplate": { "type": "string", "required": false },
+        "ediType": { "type": "EdiType", "required": false },
+        "createdAt": { "type": "datetime", "required": true, "readOnly": true },
+        "modifiedAt": { "type": "datetime", "required": false, "readOnly": true }
+      },
+      "relationships": {
+        "usedBy": ["Capability"]
+      }
+    },
+    "S3Location": {
+      "description": "Reference to an object stored in Amazon S3",
+      "fields": {
+        "bucketName": { "type": "string", "required": true },
+        "key": { "type": "string", "required": true }
+      }
+    },
+    "EdiType": {
+      "description": "EDI standard and version configuration",
+      "fields": {
+        "x12Details": {
+          "type": "object",
+          "nested": {
+            "transactionSet": { "type": "string", "required": true },
+            "version": { "type": "string", "required": true }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/main/json-schema/profile.json",
+  "title": "Profile",
+  "description": "Represents a B2B Data Interchange profile — the system-side resource that represents your EDI sender or receiver entity.",
+  "type": "object",
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "description": "Unique identifier for the profile",
+      "pattern": "^p-[a-zA-Z0-9]+$"
+    },
+    "profileArn": {
+      "type": "string",
+      "description": "Amazon Resource Name (ARN) for the profile",
+      "pattern": "^arn:aws:b2bi:[a-z0-9-]+:[0-9]+:profile/p-[a-zA-Z0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the profile",
+      "minLength": 1,
+      "maxLength": 254
+    },
+    "businessName": {
+      "type": "string",
+      "description": "Legal business name of the organization",
+      "minLength": 1,
+      "maxLength": 254
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number for the profile contact",
+      "pattern": "^\\+[1-9]\\d{1,14}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address for the profile contact"
+    },
+    "logging": {
+      "type": "string",
+      "enum": ["ENABLED", "DISABLED"],
+      "description": "Whether CloudWatch logging is enabled for this profile"
+    },
+    "logGroupName": {
+      "type": "string",
+      "description": "CloudWatch log group name for this profile"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the profile was created"
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the profile was last modified"
+    }
+  },
+  "required": ["profileId", "profileArn", "name", "businessName", "phone", "logging", "createdAt"]
+}

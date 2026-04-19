@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://b2bi.us-east-1.amazonaws.com/profiles",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "name": "Acme Supply Chain",
+      "businessName": "Acme Corporation",
+      "phone": "+15551234567",
+      "email": "edi@acme.example.com",
+      "logging": "ENABLED",
+      "clientToken": "550e8400-e29b-41d4-a716-446655440000",
+      "tags": [
+        { "key": "Environment", "value": "Production" },
+        { "key": "Department", "value": "SupplyChain" }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "profileId": "p-60fbc37c73f84d23b7d206535",
+      "profileArn": "arn:aws:b2bi:us-east-1:123456789012:profile/p-60fbc37c73f84d23b7d206535",
+      "name": "Acme Supply Chain",
+      "businessName": "Acme Corporation",
+      "phone": "+15551234567",
+      "email": "edi@acme.example.com",
+      "logging": "ENABLED",
+      "logGroupName": "/aws/b2bi/p-60fbc37c73f84d23b7d206535",
+      "createdAt": "2026-04-19T12:00:00Z"
+    }
+  }
+}

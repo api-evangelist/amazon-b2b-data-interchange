@@ -1,0 +1,167 @@
+capabilities:
+  - id: manage-profiles
+    name: Manage Profiles
+    description: >-
+      Create, read, update, and delete EDI sender/receiver profiles that
+      represent your organization's business identity in B2B trading networks.
+    operations:
+      - CreateProfile
+      - GetProfile
+      - UpdateProfile
+      - DeleteProfile
+      - ListProfiles
+    tags:
+      - Profiles
+      - Identity
+      - B2B
+
+  - id: manage-partnerships
+    name: Manage Partnerships
+    description: >-
+      Establish and manage trading partner connections by linking profiles
+      with EDI capabilities. Partnerships define the relationship between
+      your organization and each trading partner.
+    operations:
+      - CreatePartnership
+      - GetPartnership
+      - UpdatePartnership
+      - DeletePartnership
+      - ListPartnerships
+    tags:
+      - Partnerships
+      - Trading Partners
+      - B2B
+
+  - id: manage-capabilities
+    name: Manage Capabilities
+    description: >-
+      Define EDI transformation capabilities that specify how documents are
+      processed between S3 locations using transformers. Capabilities
+      configure the inbound and outbound EDI pipeline.
+    operations:
+      - CreateCapability
+      - GetCapability
+      - UpdateCapability
+      - DeleteCapability
+      - ListCapabilities
+    tags:
+      - Capabilities
+      - EDI
+      - Pipeline
+
+  - id: manage-transformers
+    name: Manage Transformers
+    description: >-
+      Create and manage transformers that define how X12 EDI documents are
+      converted to and from JSON or XML using JSONata or XSLT mapping
+      templates.
+    operations:
+      - CreateTransformer
+      - GetTransformer
+      - UpdateTransformer
+      - DeleteTransformer
+      - ListTransformers
+    tags:
+      - Transformers
+      - EDI
+      - Conversion
+
+  - id: run-transformer-jobs
+    name: Run Transformer Jobs
+    description: >-
+      Execute asynchronous EDI transformation jobs against S3-hosted input
+      files and monitor job status and output file locations.
+    operations:
+      - StartTransformerJob
+      - GetTransformerJob
+    tags:
+      - Jobs
+      - Async
+      - EDI
+
+  - id: generate-mappings
+    name: Generate Mappings
+    description: >-
+      Use Amazon Bedrock AI to automatically generate JSONata or XSLT mapping
+      templates from sample input and output documents, and create starter
+      templates for common X12 transaction sets.
+    operations:
+      - GenerateMapping
+      - CreateStarterMappingTemplate
+    tags:
+      - Mappings
+      - AI
+      - Generative AI
+      - Amazon Bedrock
+
+  - id: test-edi-workflows
+    name: Test EDI Workflows
+    description: >-
+      Validate mapping templates, parse EDI files, and test document
+      conversions before deploying to production trading partner pipelines.
+    operations:
+      - TestMapping
+      - TestParsing
+      - TestConversion
+    tags:
+      - Testing
+      - Validation
+      - EDI
+
+  - id: manage-resource-tags
+    name: Manage Resource Tags
+    description: >-
+      Apply, list, and remove metadata tags on B2B Data Interchange resources
+      for cost allocation, governance, and organizational grouping.
+    operations:
+      - TagResource
+      - UntagResource
+      - ListTagsForResource
+    tags:
+      - Tags
+      - Governance
+      - Cost Management
+
+compositions:
+  - id: onboard-trading-partner
+    name: Onboard Trading Partner
+    description: >-
+      End-to-end workflow for onboarding a new trading partner: create an
+      organizational profile, build an EDI transformer with mapping, configure
+      a capability that links S3 locations, and establish the partnership.
+    steps:
+      - capability: manage-profiles
+        operation: CreateProfile
+      - capability: manage-transformers
+        operation: CreateTransformer
+      - capability: manage-capabilities
+        operation: CreateCapability
+      - capability: manage-partnerships
+        operation: CreatePartnership
+    tags:
+      - Onboarding
+      - Trading Partners
+      - Workflow
+
+  - id: edi-transformation-pipeline
+    name: EDI Transformation Pipeline
+    description: >-
+      Workflow for transforming EDI documents: generate or create a mapping
+      template, test mapping against sample data, create a transformer, and
+      execute a transformation job.
+    steps:
+      - capability: generate-mappings
+        operation: GenerateMapping
+      - capability: test-edi-workflows
+        operation: TestMapping
+      - capability: manage-transformers
+        operation: CreateTransformer
+      - capability: run-transformer-jobs
+        operation: StartTransformerJob
+      - capability: run-transformer-jobs
+        operation: GetTransformerJob
+    tags:
+      - EDI
+      - Transformation
+      - Workflow
+      - Pipeline

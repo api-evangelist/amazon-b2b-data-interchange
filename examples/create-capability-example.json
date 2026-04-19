@@ -1,0 +1,68 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://b2bi.us-east-1.amazonaws.com/capabilities",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "name": "Purchase Order Inbound",
+      "type": "edi",
+      "configuration": {
+        "edi": {
+          "capabilityDirection": "INBOUND",
+          "type": {
+            "x12Details": {
+              "transactionSet": "X12_850",
+              "version": "VERSION_4010"
+            }
+          },
+          "inputLocation": {
+            "bucketName": "acme-edi-input",
+            "key": "inbound/850/"
+          },
+          "outputLocation": {
+            "bucketName": "acme-edi-output",
+            "key": "processed/850/"
+          },
+          "transformerId": "tr-9a8b7c6d5e4f3a2b"
+        }
+      },
+      "clientToken": "550e8400-e29b-41d4-a716-446655440002",
+      "tags": [
+        { "key": "TransactionType", "value": "PurchaseOrder" }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "capabilityId": "ca-1a2b3c4d5e6f7g8h",
+      "capabilityArn": "arn:aws:b2bi:us-east-1:123456789012:capability/ca-1a2b3c4d5e6f7g8h",
+      "name": "Purchase Order Inbound",
+      "type": "edi",
+      "configuration": {
+        "edi": {
+          "capabilityDirection": "INBOUND",
+          "type": {
+            "x12Details": {
+              "transactionSet": "X12_850",
+              "version": "VERSION_4010"
+            }
+          },
+          "inputLocation": {
+            "bucketName": "acme-edi-input",
+            "key": "inbound/850/"
+          },
+          "outputLocation": {
+            "bucketName": "acme-edi-output",
+            "key": "processed/850/"
+          },
+          "transformerId": "tr-9a8b7c6d5e4f3a2b"
+        }
+      },
+      "createdAt": "2026-04-19T12:10:00Z"
+    }
+  }
+}

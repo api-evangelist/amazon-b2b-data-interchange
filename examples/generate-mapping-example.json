@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://b2bi.us-east-1.amazonaws.com/mappings/generate",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "inputFileContent": "{\"purchaseOrder\":{\"orderNumber\":\"PO-12345\",\"vendor\":\"ACME\",\"items\":[{\"sku\":\"ABC-001\",\"quantity\":100,\"price\":9.99}]}}",
+      "outputFileContent": "ISA*00*          *00*          *ZZ*SENDERID       *ZZ*RECEIVERID     *260419*1200*U*00401*000000001*0*P*>~GS*PO*SENDERID*RECEIVERID*20260419*1200*1*X*004010~ST*850*0001~BEG*00*SA*PO-12345**20260419~PO1*1*100*EA*9.99**VP*ABC-001~CTT*1~SE*5*0001~GE*1*1~IEA*1*000000001~",
+      "mappingType": "JSONATA"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "mappingTemplate": "($po := $.purchaseOrder; 'ISA*00*          *00*          *ZZ*' & $po.vendor & '*ZZ*RECEIVER*' & $now() & '*U*00401*000000001*0*P*>~GS*PO*' & $po.vendor & '*RECEIVER*' & $now() & '*1*X*004010~ST*850*0001~BEG*00*SA*' & $po.orderNumber & '**' & $now() & '~' & $join($po.items.('PO1*' & $string($index+1) & '*' & $string(quantity) & '*EA*' & $string(price) & '**VP*' & sku & '~'), '') & 'CTT*' & $string($count($po.items)) & '~SE*' & $string(5+$count($po.items)) & '*0001~GE*1*1~IEA*1*000000001~')",
+      "mappingAccuracy": 0.82
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/main/json-schema/partnership.json",
+  "title": "Partnership",
+  "description": "Represents a B2B Data Interchange partnership — a connection between a customer profile and a trading partner with associated EDI capabilities.",
+  "type": "object",
+  "properties": {
+    "partnershipId": {
+      "type": "string",
+      "description": "Unique identifier for the partnership",
+      "pattern": "^ps-[a-zA-Z0-9]+$"
+    },
+    "partnershipArn": {
+      "type": "string",
+      "description": "Amazon Resource Name (ARN) for the partnership"
+    },
+    "profileId": {
+      "type": "string",
+      "description": "Identifier of the profile associated with this partnership"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the partnership",
+      "minLength": 1,
+      "maxLength": 254
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the trading partner contact"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number of the trading partner contact"
+    },
+    "capabilities": {
+      "type": "array",
+      "description": "List of capability IDs associated with this partnership",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "tradingPartnerId": {
+      "type": "string",
+      "description": "Identifier assigned to the trading partner"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the partnership was created"
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the partnership was last modified"
+    }
+  },
+  "required": ["partnershipId", "partnershipArn", "profileId", "name", "email", "capabilities", "createdAt"]
+}

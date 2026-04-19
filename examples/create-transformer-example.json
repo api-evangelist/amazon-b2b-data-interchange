@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://b2bi.us-east-1.amazonaws.com/transformers",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "name": "X12-850-to-JSON",
+      "fileFormat": "JSON",
+      "mappingTemplate": "$",
+      "ediType": {
+        "x12Details": {
+          "transactionSet": "X12_850",
+          "version": "VERSION_4010"
+        }
+      },
+      "clientToken": "550e8400-e29b-41d4-a716-446655440001",
+      "tags": [
+        { "key": "Direction", "value": "Inbound" },
+        { "key": "Format", "value": "X12_850" }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "transformerId": "tr-9a8b7c6d5e4f3a2b",
+      "transformerArn": "arn:aws:b2bi:us-east-1:123456789012:transformer/tr-9a8b7c6d5e4f3a2b",
+      "name": "X12-850-to-JSON",
+      "status": "inactive",
+      "createdAt": "2026-04-19T12:05:00Z"
+    }
+  }
+}

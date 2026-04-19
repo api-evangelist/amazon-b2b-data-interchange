@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://b2bi.us-east-1.amazonaws.com/partnerships",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "AWS4-HMAC-SHA256 Credential=..."
+    },
+    "body": {
+      "profileId": "p-60fbc37c73f84d23b7d206535",
+      "name": "Walmart Partnership",
+      "email": "edi@walmart.example.com",
+      "phone": "+18005551234",
+      "capabilities": ["ca-1a2b3c4d5e6f7g8h"],
+      "clientToken": "550e8400-e29b-41d4-a716-446655440003",
+      "tags": [
+        { "key": "Partner", "value": "Walmart" },
+        { "key": "Region", "value": "US" }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "profileId": "p-60fbc37c73f84d23b7d206535",
+      "partnershipId": "ps-5f4e3d2c1b0a9876",
+      "partnershipArn": "arn:aws:b2bi:us-east-1:123456789012:partnership/ps-5f4e3d2c1b0a9876",
+      "name": "Walmart Partnership",
+      "email": "edi@walmart.example.com",
+      "phone": "+18005551234",
+      "capabilities": ["ca-1a2b3c4d5e6f7g8h"],
+      "tradingPartnerId": "tp-abcdef1234567890",
+      "createdAt": "2026-04-19T12:15:00Z"
+    }
+  }
+}

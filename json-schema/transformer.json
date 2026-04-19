@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/main/json-schema/transformer.json",
+  "title": "Transformer",
+  "description": "Represents a B2B Data Interchange transformer — defines how X12 EDI documents are converted to and from JSON or XML using mapping templates.",
+  "type": "object",
+  "properties": {
+    "transformerId": {
+      "type": "string",
+      "description": "Unique identifier for the transformer",
+      "pattern": "^tr-[a-zA-Z0-9]+$"
+    },
+    "transformerArn": {
+      "type": "string",
+      "description": "Amazon Resource Name (ARN) for the transformer"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the transformer",
+      "minLength": 1,
+      "maxLength": 254
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "Current status of the transformer"
+    },
+    "fileFormat": {
+      "type": "string",
+      "enum": ["XML", "JSON", "NOT_USED"],
+      "description": "Output file format for the transformer"
+    },
+    "mappingTemplate": {
+      "type": "string",
+      "description": "JSONata or XSLT mapping template content"
+    },
+    "ediType": {
+      "type": "object",
+      "description": "EDI type configuration for the transformer",
+      "properties": {
+        "x12Details": {
+          "type": "object",
+          "properties": {
+            "transactionSet": {
+              "type": "string",
+              "description": "X12 transaction set (e.g. X12_850, X12_856, X12_810)"
+            },
+            "version": {
+              "type": "string",
+              "description": "X12 version (e.g. VERSION_4010, VERSION_5010)"
+            }
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the transformer was created"
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the transformer was last modified"
+    }
+  },
+  "required": ["transformerId", "transformerArn", "name", "status", "createdAt"]
+}

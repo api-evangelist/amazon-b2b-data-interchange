@@ -1,0 +1,109 @@
+extends: spectral:oas
+rules:
+  aws-b2bi-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    message: "Operation summary '{{value}}' must be in Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-z0-9]*(\\s[A-Z][a-z0-9]*)*|[A-Z]+)$"
+
+  aws-b2bi-operation-tags:
+    description: All operations must have at least one tag
+    message: Operation must have at least one tag
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  aws-b2bi-operation-id:
+    description: All operations must have an operationId
+    message: Operation must have an operationId
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  aws-b2bi-operation-description:
+    description: All operations must have a description
+    message: Operation must have a description
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: description
+      function: truthy
+
+  aws-b2bi-path-param-required:
+    description: All path parameters must be marked as required
+    message: Path parameter must be marked as required
+    severity: error
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: required
+      function: truthy
+
+  aws-b2bi-error-responses:
+    description: All operations must define error responses
+    message: Operation must define at least one 4xx or 5xx response
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            responses:
+              type: object
+              minProperties: 2
+
+  aws-b2bi-request-body-content-type:
+    description: Request bodies must use application/json content type
+    message: Request body must specify application/json content type
+    severity: error
+    given: "$.paths[*][post,put,patch].requestBody.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - application/json
+
+  aws-b2bi-components-schema-description:
+    description: All component schemas must have a description
+    message: Schema component must have a description
+    severity: info
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  aws-b2bi-client-token-idempotency:
+    description: Create operations should support clientToken for idempotency
+    message: Create operations should include a clientToken field for idempotency
+    severity: info
+    given: "$.paths[*].post.requestBody.content.application/json.schema.properties"
+    then:
+      field: clientToken
+      function: truthy
+
+  aws-b2bi-pagination-next-token:
+    description: List operations should return a nextToken for pagination
+    message: List operation responses should include a nextToken field
+    severity: info
+    given: "$.paths[*].get.responses.200.content.application/json.schema.properties"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - required:
+                - nextToken
+            - not:
+                required:
+                  - nextToken

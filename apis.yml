@@ -1,16 +1,165 @@
 aid: amazon-b2b-data-interchange
-name: Amazon B2b Data Interchange
+name: Amazon B2B Data Interchange
 description: >-
-  Amazon B2b Data Interchange provides API capabilities.
+  AWS B2B Data Interchange is a fully managed service that automates the
+  transformation and exchange of electronic data interchange (EDI) documents
+  at cloud scale. It enables businesses to onboard trading partners, transform
+  X12 EDI documents to and from JSON or XML, and manage capabilities,
+  profiles, and partnerships with pay-as-you-go pricing. The service supports
+  supply chain, healthcare, and financial services workflows and leverages
+  Amazon Bedrock for AI-assisted mapping generation.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags: []
+tags:
+  - EDI
+  - B2B
+  - Data Interchange
+  - Supply Chain
+  - Healthcare
+  - Financial Services
+  - Amazon Web Services
+  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-04-19'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: amazon-b2b-data-interchange:aws-b2b-data-interchange-api
+    name: AWS B2B Data Interchange API
+    description: >-
+      The AWS B2B Data Interchange API provides programmatic access to manage
+      EDI transformation workflows, trading partner profiles, capabilities,
+      partnerships, and transformers. It enables creation and management of
+      inbound and outbound EDI pipelines using X12 standards and supports
+      AI-assisted mapping template generation via Amazon Bedrock.
+    humanURL: https://docs.aws.amazon.com/b2bi/latest/APIReference/api-welcome.html
+    baseURL: https://b2bi.us-east-1.amazonaws.com
+    tags:
+      - EDI
+      - B2B
+      - Transformation
+      - X12
+      - Trading Partners
+      - Capabilities
+      - Profiles
+      - Partnerships
+      - Transformers
+    properties:
+      - type: Documentation
+        url: https://docs.aws.amazon.com/b2bi/latest/APIReference/api-welcome.html
+      - type: Documentation
+        url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/openapi/aws-b2b-data-interchange-api-openapi.yml
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+      - type: JSONStructure
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+      - type: JSONLD
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+      - type: SpectralRuleset
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+      - type: Capabilities
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+      - type: Vocabulary
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    contact:
+      - FN: AWS Support
+        url: https://aws.amazon.com/contact-us/
+    features:
+      - name: EDI Transformation
+        description: >-
+          Transform X12 EDI documents to JSON or XML and generate EDI from
+          JSON/XML data inputs, automating inbound and outbound EDI workflows.
+      - name: AI-Assisted Mapping
+        description: >-
+          Use Amazon Bedrock to automatically generate mapping templates,
+          reducing mapping code development time by up to 50%.
+      - name: Trading Partner Management
+        description: >-
+          Onboard and manage trading partners through profiles, capabilities,
+          and partnerships with visibility into transactional communications.
+      - name: EDI Splitting
+        description: >-
+          Split inbound X12 EDI documents containing multiple transactions into
+          individually processed single-transaction documents, supporting files
+          up to 5GB.
+      - name: HIPAA Compliance
+        description: >-
+          Supports secure exchange of protected health information for
+          healthcare EDI workflows in compliance with HIPAA requirements.
+    useCases:
+      - name: Supply Chain Partner Onboarding
+        description: >-
+          Automate onboarding of trading partners in supply chain networks,
+          enabling rapid EDI integration without custom development.
+      - name: Healthcare Claims Processing
+        description: >-
+          Streamline healthcare enrollment and claims processing workflows
+          using X12 EDI standards with HIPAA-compliant data exchange.
+      - name: Financial Transaction Processing
+        description: >-
+          Expedite complex financial transactions like mortgage applications
+          and tax assessments through automated EDI transformation.
+    integrations:
+      - name: AWS Transfer Family
+        description: >-
+          Integrate with AWS Transfer Family for managed file transfer
+          ingestion workflows into the B2B Data Interchange pipeline.
+      - name: Amazon S3
+        description: >-
+          Monitor S3 locations for inbound EDI documents and write transformed
+          outputs to S3 buckets for downstream processing.
+      - name: Amazon EventBridge
+        description: >-
+          Trigger event-driven workflows from EDI transformation events using
+          Amazon EventBridge integration.
+      - name: Amazon Bedrock
+        description: >-
+          Leverage Amazon Bedrock generative AI for automated mapping template
+          generation from source and target schemas.
+    solutions:
+      - name: EDI Modernization
+        description: >-
+          Migrate from legacy EDI infrastructure to a cloud-native managed
+          service with pay-as-you-go pricing and no upfront investment.
+      - name: Multi-Partner EDI Network
+        description: >-
+          Build and manage multi-partner EDI networks with centralized
+          visibility and standardized transformation pipelines.
+common:
+  - type: CLI
+    url: https://docs.aws.amazon.com/cli/latest/reference/b2bi/
+  - type: SDK
+    url: https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-b2bi
+  - type: SDK
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/b2bi
+  - type: SDK
+    url: https://docs.rs/aws-sdk-b2bi
+  - type: Samples
+    url: https://github.com/aws-samples/aws-b2b-data-interchange-toolkit
+  - type: CloudFormation
+    url: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_B2BI.html
+  - type: Pricing
+    url: https://aws.amazon.com/b2b-data-interchange/pricing/
+  - type: TermsOfService
+    url: https://aws.amazon.com/service-terms/
+  - type: PrivacyPolicy
+    url: https://aws.amazon.com/privacy/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

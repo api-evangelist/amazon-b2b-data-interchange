@@ -1,0 +1,158 @@
+vocabulary:
+  domain: B2B Data Interchange
+  description: >-
+    Taxonomy and vocabulary for AWS B2B Data Interchange covering EDI
+    standards, trading partner concepts, transformation pipelines, and
+    operational dimensions.
+
+  concepts:
+    - term: EDI
+      label: Electronic Data Interchange
+      definition: >-
+        A standardized electronic format for exchanging business documents
+        between organizations, replacing paper-based processes such as
+        purchase orders and invoices.
+
+    - term: X12
+      label: X12 EDI Standard
+      definition: >-
+        The ANSI X12 EDI standard used primarily in North America for
+        inter-organizational data exchange. Defines transaction sets for
+        common business documents.
+
+    - term: Transaction Set
+      label: X12 Transaction Set
+      definition: >-
+        A specific business document type within the X12 standard, identified
+        by a numeric code (e.g., 850 for Purchase Order, 856 for ASN,
+        810 for Invoice).
+
+    - term: ISA
+      label: Interchange Control Header
+      definition: >-
+        The ISA segment is the first segment in an X12 EDI interchange,
+        identifying the sender and receiver of the EDI transmission.
+
+    - term: Profile
+      label: B2B Profile
+      definition: >-
+        A system-side resource representing an EDI sender or receiver entity.
+        Stores business name, contact information, and logging configuration.
+
+    - term: Partnership
+      label: Trading Partnership
+      definition: >-
+        A connection between a customer profile and a trading partner,
+        linking the profile to one or more EDI capabilities.
+
+    - term: Capability
+      label: EDI Capability
+      definition: >-
+        Defines an EDI transformation pipeline including EDI type, direction,
+        input/output S3 locations, and the transformer to use.
+
+    - term: Transformer
+      label: EDI Transformer
+      definition: >-
+        A configuration that specifies how EDI documents are converted
+        using a mapping template (JSONata or XSLT) between EDI and
+        JSON/XML formats.
+
+    - term: Mapping Template
+      label: EDI Mapping Template
+      definition: >-
+        A JSONata or XSLT document that defines the transformation rules
+        for converting between EDI and JSON/XML data structures.
+
+    - term: JSONata
+      label: JSONata Expression Language
+      definition: >-
+        A lightweight query and transformation language for JSON data,
+        supported as a mapping template format in AWS B2B Data Interchange.
+
+    - term: XSLT
+      label: Extensible Stylesheet Language Transformations
+      definition: >-
+        An XML-based language for transforming XML documents, supported as
+        a mapping template format in AWS B2B Data Interchange.
+
+    - term: Trading Partner
+      label: Trading Partner
+      definition: >-
+        An external business entity with whom EDI documents are exchanged.
+        Represented by a partnership in the B2B Data Interchange service.
+
+    - term: Inbound EDI
+      label: Inbound EDI
+      definition: >-
+        EDI documents received from a trading partner and transformed into
+        JSON or XML for downstream processing.
+
+    - term: Outbound EDI
+      label: Outbound EDI
+      definition: >-
+        JSON or XML documents generated from business systems and transformed
+        into EDI format for transmission to a trading partner.
+
+    - term: EDI Splitting
+      label: EDI Document Splitting
+      definition: >-
+        The process of splitting an X12 EDI interchange containing multiple
+        transactions into individually processed single-transaction documents.
+
+  transaction-sets:
+    - code: "110"
+      name: Air Freight Details and Invoice
+    - code: "810"
+      name: Invoice
+    - code: "820"
+      name: Payment Order / Remittance Advice
+    - code: "824"
+      name: Application Advice
+    - code: "830"
+      name: Planning Schedule with Release Capability
+    - code: "832"
+      name: Price / Sales Catalog
+    - code: "834"
+      name: Benefit Enrollment and Maintenance
+    - code: "835"
+      name: Health Care Claim Payment / Advice
+    - code: "837"
+      name: Health Care Claim
+    - code: "850"
+      name: Purchase Order
+    - code: "855"
+      name: Purchase Order Acknowledgment
+    - code: "856"
+      name: Ship Notice / Manifest (ASN)
+    - code: "860"
+      name: Purchase Order Change Request
+    - code: "865"
+      name: Purchase Order Change Acknowledgment
+    - code: "997"
+      name: Functional Acknowledgment
+
+  versions:
+    - code: VERSION_4010
+      name: X12 Version 4010
+    - code: VERSION_4030
+      name: X12 Version 4030
+    - code: VERSION_5010
+      name: X12 Version 5010
+    - code: VERSION_5010_HIPAA
+      name: X12 Version 5010 HIPAA
+
+  tags:
+    - EDI
+    - B2B
+    - Electronic Data Interchange
+    - Supply Chain
+    - Healthcare
+    - Financial Services
+    - Trading Partners
+    - X12
+    - Data Transformation
+    - Amazon Web Services
+    - AWS
+    - Serverless
+    - Pay-As-You-Go
