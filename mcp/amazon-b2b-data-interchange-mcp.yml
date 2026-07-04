@@ -1,0 +1,103 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/aws-b2b-data-interchange-api-openapi.yml
+notes: >-
+  No official hosted/remote MCP server dedicated to AWS B2B Data Interchange was
+  found (AWS publishes general-purpose servers under github.com/awslabs/mcp, none
+  b2bi-specific). Tools below are a candidate set derived one-per-operationId from
+  the repo OpenAPI; they are not an endorsed server.
+server:
+  name: amazon-b2b-data-interchange
+  transport: stdio
+tools:
+  - name: create_profile
+    description: Create a customer profile representing an EDI sender or receiver entity.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#CreateProfile
+  - name: list_profiles
+    description: List the profiles associated with your AWS account.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#ListProfiles
+  - name: get_profile
+    description: Retrieve the details for the specified profile.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GetProfile
+  - name: update_profile
+    description: Update the specified parameters for a profile.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#UpdateProfile
+  - name: delete_profile
+    description: Delete the specified profile.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#DeleteProfile
+  - name: create_partnership
+    description: Create a partnership between a customer and a trading partner.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#CreatePartnership
+  - name: list_partnerships
+    description: List the partnerships associated with your AWS account.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#ListPartnerships
+  - name: get_partnership
+    description: Retrieve the details for a partnership.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GetPartnership
+  - name: update_partnership
+    description: Update parameters for a partnership.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#UpdatePartnership
+  - name: delete_partnership
+    description: Delete the specified partnership.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#DeletePartnership
+  - name: create_capability
+    description: Instantiate an EDI transformation capability.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#CreateCapability
+  - name: list_capabilities
+    description: List the capabilities associated with your AWS account.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#ListCapabilities
+  - name: get_capability
+    description: Retrieve the details for the specified capability.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GetCapability
+  - name: update_capability
+    description: Update the specified parameters for a capability.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#UpdateCapability
+  - name: delete_capability
+    description: Delete the specified capability.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#DeleteCapability
+  - name: create_transformer
+    description: Create an EDI transformer for document conversion.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#CreateTransformer
+  - name: list_transformers
+    description: List the available transformers.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#ListTransformers
+  - name: get_transformer
+    description: Retrieve the details for the specified transformer.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GetTransformer
+  - name: update_transformer
+    description: Update the specified parameters for a transformer.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#UpdateTransformer
+  - name: delete_transformer
+    description: Delete the specified transformer.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#DeleteTransformer
+  - name: start_transformer_job
+    description: Run a job that uses a transformer to parse an input EDI file.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#StartTransformerJob
+  - name: get_transformer_job
+    description: Return the details of a transformer run by job ID.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GetTransformerJob
+  - name: generate_mapping
+    description: Use Amazon Bedrock to generate a mapping from sample input and output documents.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#GenerateMapping
+  - name: create_starter_mapping_template
+    description: Create a starter JSONata or XSLT mapping template.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#CreateStarterMappingTemplate
+  - name: test_mapping
+    description: Map a sample file to a given JSONata or XSLT template.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#TestMapping
+  - name: test_parsing
+    description: Parse an input EDI file.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#TestParsing
+  - name: test_conversion
+    description: Convert an X12 EDI file to JSON or XML.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#TestConversion
+  - name: list_tags_for_resource
+    description: List all tags associated with the specified resource ARN.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#ListTagsForResource
+  - name: tag_resource
+    description: Attach a key-value pair to a resource.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#TagResource
+  - name: untag_resource
+    description: Detach a key-value pair from a resource.
+    source_operation: openapi/aws-b2b-data-interchange-api-openapi.yml#UntagResource

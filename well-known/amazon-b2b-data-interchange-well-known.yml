@@ -1,0 +1,20 @@
+generated: '2026-06-20'
+method: searched
+source: probed https://b2bi.us-east-1.amazonaws.com/.well-known/* on 2026-06-20
+host: https://b2bi.us-east-1.amazonaws.com
+notes: >-
+  The b2bi.<region>.amazonaws.com endpoints are AWS Signature V4 / query-protocol
+  API hosts and do not publish a /.well-known/ discovery surface. All probed
+  documents returned 404. No SecurityTxt, OIDC, OAuth AS, api-catalog, or
+  ai-plugin documents are published.
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

@@ -1,0 +1,35 @@
+generated: '2026-06-20'
+method: derived
+format: aws-error
+source: >-
+  openapi/aws-b2b-data-interchange-api-openapi.yml (components.responses) enriched
+  from https://docs.aws.amazon.com/b2bi/latest/APIReference/CommonErrors.html
+notes: >-
+  AWS B2B Data Interchange returns AWS-style JSON errors (application/json with a
+  message/code body and an x-amzn-ErrorType header), not RFC 9457
+  application/problem+json. Titles/remediation enriched from the AWS API Reference.
+problems:
+  - status: 400
+    name: ValidationException
+    title: The input fails to satisfy the constraints specified by an AWS service.
+    remediation: Correct the request parameters to satisfy the documented constraints and retry.
+  - status: 403
+    name: AccessDeniedException
+    title: You do not have sufficient access to perform this action.
+    remediation: Ensure the calling IAM principal has the required b2bi permissions.
+  - status: 404
+    name: ResourceNotFoundException
+    title: The requested resource does not exist or cannot be found.
+    remediation: Verify the resource ID/ARN exists in the target account and region.
+  - status: 409
+    name: ConflictException
+    title: A conflict occurred, e.g. deleting a resource that is currently in use.
+    remediation: Remove dependent partnerships/capabilities before deleting, then retry.
+  - status: 429
+    name: ThrottlingException
+    title: The request was denied due to request throttling.
+    remediation: Back off with exponential retry and reduce request rate.
+  - status: 500
+    name: InternalServerException
+    title: An error occurred in the AWS B2B Data Interchange service.
+    remediation: Retry with exponential backoff; contact AWS Support if it persists.

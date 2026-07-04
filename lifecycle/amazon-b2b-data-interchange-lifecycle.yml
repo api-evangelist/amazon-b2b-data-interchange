@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  openapi/aws-b2b-data-interchange-api-openapi.yml (info.version) and public AWS
+  policy pages (health dashboard, SDK deprecation policy)
+notes: >-
+  AWS APIs use a date-based API version identifier and are governed by AWS's
+  organization-wide operational and deprecation policies rather than a service
+  URI version. No operations are marked deprecated in the repo OpenAPI.
+versioning:
+  scheme: api-version-date
+  current: '2022-06-23'
+  docs: https://docs.aws.amazon.com/b2bi/latest/APIReference/api-welcome.html
+deprecation:
+  policy_url: https://docs.aws.amazon.com/sdkref/latest/guide/overview.html
+  sunset_header: false
+  notes: >-
+    AWS communicates service and SDK deprecations via documentation, the AWS
+    Health Dashboard, and email notices rather than RFC 8594 Sunset/Deprecation
+    HTTP headers.
+sla:
+  url: https://aws.amazon.com/service-terms/
+  uptime_target: null
+  notes: >-
+    No standalone published SLA for B2B Data Interchange was found; the service
+    is covered by the AWS Service Terms.
+status_page: https://health.aws.amazon.com/health/status
+deprecated_operations: []

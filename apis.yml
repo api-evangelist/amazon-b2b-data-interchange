@@ -22,7 +22,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: amazon-b2b-data-interchange:aws-b2b-data-interchange-api
@@ -77,6 +77,16 @@ apis:
       - type: Vocabulary
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+      - type: Overlay
+        url: overlays/amazon-b2b-data-interchange-aws-b2b-data-interchange-api-overlay.yaml
+      - type: MCPServer
+        url: mcp/amazon-b2b-data-interchange-mcp.yml
+      - type: Conformance
+        url: conformance/amazon-b2b-data-interchange-conformance.yml
+      - type: ErrorCatalog
+        url: errors/amazon-b2b-data-interchange-problem-types.yml
+      - type: Lifecycle
+        url: lifecycle/amazon-b2b-data-interchange-lifecycle.yml
     contact:
       - FN: AWS Support
         url: https://aws.amazon.com/contact-us/
@@ -142,6 +152,12 @@ apis:
           Build and manage multi-partner EDI networks with centralized
           visibility and standardized transformation pipelines.
 common:
+  - type: Packages
+    url: packages/amazon-b2b-data-interchange-packages.yml
+  - type: WellKnown
+    url: well-known/amazon-b2b-data-interchange-well-known.yml
+  - type: LLMsTxt
+    url: llms/amazon-b2b-data-interchange-llms.txt
   - type: CLI
     url: https://docs.aws.amazon.com/cli/latest/reference/b2bi/
   - type: SDK

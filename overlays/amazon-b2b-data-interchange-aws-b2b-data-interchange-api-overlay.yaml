@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AWS B2B Data Interchange API
+  version: 1.0.0
+extends: openapi/aws-b2b-data-interchange-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: Amazon Web Services
+      x-apievangelist-slug: amazon-b2b-data-interchange
+      x-apievangelist-topics:
+        - EDI
+        - B2B
+        - X12
+        - Supply Chain
+        - Healthcare
+      x-authentication: AWS Signature Version 4 (aws_iam)
+      x-pagination: token-based via nextToken/maxResults query parameters
+      x-idempotency: clientToken field on create operations
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        packages: packages/amazon-b2b-data-interchange-packages.yml
+        llms: llms/amazon-b2b-data-interchange-llms.txt
+        mcp: mcp/amazon-b2b-data-interchange-mcp.yml
+        conformance: conformance/amazon-b2b-data-interchange-conformance.yml
+        errors: errors/amazon-b2b-data-interchange-problem-types.yml
+        lifecycle: lifecycle/amazon-b2b-data-interchange-lifecycle.yml
+  - target: $.tags
+    update:
+      - name: Profiles
+        description: Manage customer profiles representing private networks
+        x-apievangelist-category: identity
+      - name: Testing
+        description: Test and validate mappings, parsing, and conversions
+        x-apievangelist-category: developer-experience

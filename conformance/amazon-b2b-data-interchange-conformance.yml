@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/aws-b2b-data-interchange-api-openapi.yml
+notes: >-
+  Derived from the repo OpenAPI (security schemes, response media types, query
+  parameters, request fields) and known AWS service characteristics. B2B Data
+  Interchange supports HIPAA-eligible EDI workflows per apis.yml features.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: security uses AWS SigV4 (aws_iam apiKey scheme), not OAuth2
+  - id: oidc
+    conforms: false
+  - id: aws-sigv4
+    conforms: true
+    evidence: securitySchemes.aws_iam AWS Signature Version 4 authentication
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error responses use a custom ErrorResponse (message/code), application/json not application/problem+json
+  - id: pagination
+    conforms: true
+    evidence: list operations expose maxResults + nextToken query/response token pagination
+  - id: idempotency
+    conforms: true
+    evidence: create operations accept a clientToken idempotency field
+  - id: x12-edi
+    conforms: true
+    evidence: transformers operate on X12 transaction sets and versions (X12Details, EdiType)
+  - id: hipaa
+    conforms: true
+    evidence: apis.yml features list HIPAA-compliant healthcare EDI exchange (service is HIPAA-eligible)
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: scim2
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fapi
+    conforms: false

@@ -1,0 +1,53 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  AWS SDK registries (npm, PyPI, Maven Central, NuGet, pkg.go.dev, crates.io)
+  probed 2026-06-20; all return 200 for the b2bi client
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-b2bi"
+    url: https://www.npmjs.com/package/@aws-sdk/client-b2bi
+    install: npm install @aws-sdk/client-b2bi
+    official: true
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    notes: >-
+      The B2B Data Interchange client is provided as the "b2bi" service client
+      within the AWS SDK for Python (boto3 / botocore); there is no standalone
+      per-service PyPI package.
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:b2bi
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/b2bi
+    install: >-
+      <dependency><groupId>software.amazon.awssdk</groupId><artifactId>b2bi</artifactId></dependency>
+    official: true
+  - language: csharp
+    registry: nuget
+    name: AWSSDK.B2bi
+    url: https://www.nuget.org/packages/AWSSDK.B2bi
+    install: dotnet add package AWSSDK.B2bi
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/b2bi
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/b2bi
+    install: go get github.com/aws/aws-sdk-go-v2/service/b2bi
+    official: true
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-b2bi
+    url: https://crates.io/crates/aws-sdk-b2bi
+    install: cargo add aws-sdk-b2bi
+    official: true
+  - language: shell
+    registry: aws-cli
+    name: aws b2bi
+    url: https://docs.aws.amazon.com/cli/latest/reference/b2bi/
+    install: aws b2bi help
+    official: true
