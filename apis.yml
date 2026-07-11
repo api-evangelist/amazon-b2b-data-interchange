@@ -152,6 +152,12 @@ apis:
           Build and manage multi-partner EDI networks with centralized
           visibility and standardized transformation pipelines.
 common:
+  - type: VulnerabilityDisclosure
+    url: security/amazon-b2b-data-interchange-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-b2b-data-interchange-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-b2b-data-interchange-authentication.yml
   - type: Packages
     url: packages/amazon-b2b-data-interchange-packages.yml
   - type: WellKnown
