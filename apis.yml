@@ -152,6 +152,8 @@ apis:
           Build and manage multi-partner EDI networks with centralized
           visibility and standardized transformation pipelines.
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-b2b-data-interchange-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/amazon-b2b-data-interchange-vulnerability-disclosure.yml
   - type: DomainSecurity
