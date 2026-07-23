@@ -1,0 +1,426 @@
+openapi: 3.1.0
+info:
+  title: AWS B2B Data Interchange Capabilities Transformers API
+  description: AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.
+  version: '2022-06-23'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://b2bi.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://b2bi.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://b2bi.eu-west-1.amazonaws.com
+  description: EU (Ireland)
+security:
+- aws_iam: []
+tags:
+- name: Transformers
+  description: Manage EDI transformers for document conversion
+paths:
+  /transformers:
+    post:
+      operationId: CreateTransformer
+      summary: Create Transformer
+      description: Creates a transformer. AWS B2B Data Interchange supports X12 EDI documents, allowing you to specify the direction (inbound or outbound), the X12 transaction set and version, and the common data representation format (JSON or XML).
+      tags:
+      - Transformers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTransformerRequest'
+      responses:
+        '200':
+          description: Transformer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTransformerResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '409':
+          $ref: '#/components/responses/ConflictException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+    get:
+      operationId: ListTransformers
+      summary: List Transformers
+      description: Lists the available transformers.
+      tags:
+      - Transformers
+      parameters:
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of transformers returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTransformersResponse'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+  /transformers/{transformerId}:
+    get:
+      operationId: GetTransformer
+      summary: Get Transformer
+      description: Retrieves the details for the transformer specified by the transformer ID.
+      tags:
+      - Transformers
+      parameters:
+      - name: transformerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transformer details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformerSummary'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+    patch:
+      operationId: UpdateTransformer
+      summary: Update Transformer
+      description: Updates the specified parameters for a transformer.
+      tags:
+      - Transformers
+      parameters:
+      - name: transformerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTransformerRequest'
+      responses:
+        '200':
+          description: Transformer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformerSummary'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+    delete:
+      operationId: DeleteTransformer
+      summary: Delete Transformer
+      description: Deletes the specified transformer. A transformer must not be associated with any capabilities to be deleted.
+      tags:
+      - Transformers
+      parameters:
+      - name: transformerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transformer deleted successfully
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '409':
+          $ref: '#/components/responses/ConflictException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+  /transformer-jobs:
+    post:
+      operationId: StartTransformerJob
+      summary: Start Transformer Job
+      description: Runs a job, using a transformer, to parse input EDI (electronic data interchange) file. The input file has a specific file size limit of 250 MB for each supported X12 transaction set.
+      tags:
+      - Transformers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartTransformerJobRequest'
+      responses:
+        '200':
+          description: Transformer job started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartTransformerJobResponse'
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+  /transformer-jobs/{transformerJobId}:
+    get:
+      operationId: GetTransformerJob
+      summary: Get Transformer Job
+      description: Returns the details of the transformer run, based on the Transformer job ID.
+      tags:
+      - Transformers
+      parameters:
+      - name: transformerJobId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transformerId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transformer job details returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransformerJobResponse'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+components:
+  responses:
+    ConflictException:
+      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    ListTransformersResponse:
+      type: object
+      properties:
+        transformers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransformerSummary'
+        nextToken:
+          type: string
+    TransformerSummary:
+      type: object
+      properties:
+        transformerId:
+          type: string
+        transformerArn:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        modifiedAt:
+          type: string
+          format: date-time
+    CreateTransformerResponse:
+      type: object
+      properties:
+        transformerId:
+          type: string
+        transformerArn:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    CreateTransformerRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        clientToken:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        mappingTemplate:
+          type: string
+        ediType:
+          $ref: '#/components/schemas/EdiType'
+        fileFormat:
+          type: string
+          enum:
+          - XML
+          - JSON
+          - NOT_USED
+    S3Location:
+      type: object
+      properties:
+        bucketName:
+          type: string
+        key:
+          type: string
+    StartTransformerJobResponse:
+      type: object
+      properties:
+        transformerJobId:
+          type: string
+    X12Details:
+      type: object
+      properties:
+        transactionSet:
+          type: string
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    GetTransformerJobResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - running
+          - succeeded
+          - failed
+        outputFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3Location'
+        message:
+          type: string
+    UpdateTransformerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        mappingTemplate:
+          type: string
+        ediType:
+          $ref: '#/components/schemas/EdiType'
+        fileFormat:
+          type: string
+    StartTransformerJobRequest:
+      type: object
+      required:
+      - inputFile
+      - outputLocation
+      - transformerId
+      properties:
+        inputFile:
+          $ref: '#/components/schemas/S3Location'
+        outputLocation:
+          $ref: '#/components/schemas/S3Location'
+        transformerId:
+          type: string
+        clientToken:
+          type: string
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS B2B Data Interchange API Reference
+  url: https://docs.aws.amazon.com/b2bi/latest/APIReference/api-welcome.html

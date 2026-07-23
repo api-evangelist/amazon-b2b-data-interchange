@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: AWS B2B Data Interchange Capabilities Tags API
+  description: AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.
+  version: '2022-06-23'
+  contact:
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://b2bi.us-east-1.amazonaws.com
+  description: US East (N. Virginia)
+- url: https://b2bi.us-west-2.amazonaws.com
+  description: US West (Oregon)
+- url: https://b2bi.eu-west-1.amazonaws.com
+  description: EU (Ireland)
+security:
+- aws_iam: []
+tags:
+- name: Tags
+  description: Manage resource tags
+paths:
+  /tags/{resourceARN}:
+    get:
+      operationId: ListTagsForResource
+      summary: List Tags For Resource
+      description: Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource can be a user, role, or other resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceARN
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tags returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceResponse'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+    post:
+      operationId: TagResource
+      summary: Tag Resource
+      description: Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN).
+      tags:
+      - Tags
+      parameters:
+      - name: resourceARN
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourceRequest'
+      responses:
+        '200':
+          description: Tags added successfully
+        '400':
+          $ref: '#/components/responses/ValidationException'
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+    delete:
+      operationId: UntagResource
+      summary: Untag Resource
+      description: Detaches a key-value pair from the specified resource, as identified by its Amazon Resource Name (ARN).
+      tags:
+      - Tags
+      parameters:
+      - name: resourceARN
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tagKeys
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Tags removed successfully
+        '403':
+          $ref: '#/components/responses/AccessDeniedException'
+        '404':
+          $ref: '#/components/responses/ResourceNotFoundException'
+        '429':
+          $ref: '#/components/responses/ThrottlingException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+components:
+  responses:
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    TagResourceRequest:
+      type: object
+      required:
+      - tags
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+  securitySchemes:
+    aws_iam:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication
+externalDocs:
+  description: AWS B2B Data Interchange API Reference
+  url: https://docs.aws.amazon.com/b2bi/latest/APIReference/api-welcome.html
