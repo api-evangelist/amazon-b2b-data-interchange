@@ -1,0 +1,24 @@
+{
+  "provider": "amazon-b2b-data-interchange",
+  "sources": [
+    "amazon-b2b-data-interchange-capabilities-api-openapi.yml",
+    "amazon-b2b-data-interchange-partnerships-api-openapi.yml",
+    "amazon-b2b-data-interchange-profiles-api-openapi.yml",
+    "amazon-b2b-data-interchange-tags-api-openapi.yml",
+    "amazon-b2b-data-interchange-testing-api-openapi.yml",
+    "amazon-b2b-data-interchange-transformers-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-b2b-data-interchange-capabilities-api-openapi.yml",
+    "amazon-b2b-data-interchange-partnerships-api-openapi.yml",
+    "amazon-b2b-data-interchange-profiles-api-openapi.yml",
+    "amazon-b2b-data-interchange-tags-api-openapi.yml",
+    "amazon-b2b-data-interchange-testing-api-openapi.yml",
+    "amazon-b2b-data-interchange-transformers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
