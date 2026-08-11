@@ -302,6 +302,10 @@ apis:
   - type: Lifecycle
     url: lifecycle/amazon-b2b-data-interchange-lifecycle.yml
 common:
+  - type: MCPServer
+    url: mcp/amazon-b2b-data-interchange-mcp.yml
+  - type: Overlay
+    url: overlays/amazon-b2b-data-interchange-aws-b2b-data-interchange-api-overlay.yaml
   - type: AgenticAccess
     url: agentic-access/amazon-b2b-data-interchange-agentic-access.yml
   - type: VulnerabilityDisclosure
