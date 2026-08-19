@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS B2B Data Interchange Capabilities Testing API",
+    "version": "2022-06-23"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/mappings/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes sample input and output documents and uses Amazon Bedrock to generate a mapping automatically. Depending on the accuracy and symmetry of the input and output documents, this can generate an accurate mapping. Additional iterations are needed to refine the generated mapping."
+        },
+        {
+          "info": {
+            "name": "Create Starter Mapping Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/mappings/starter-template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Amazon Web Services B2B Data Interchange uses a mapping template in JSONata or XSLT format to transform a customer input file into a JSON or XML file that can be converted to EDI."
+        },
+        {
+          "info": {
+            "name": "Test Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/mappings/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Maps the specified sample file to a given JSONata or XSLT template."
+        },
+        {
+          "info": {
+            "name": "Test Parsing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/parsings/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Parses the input EDI (electronic data interchange) file. The input file has a specific file size limit of 250 MB."
+        },
+        {
+          "info": {
+            "name": "Test Conversion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/conversions/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation mimics the latter half of a typical inbound X12 EDI request. It takes an X12 EDI file as input, converts the file to JSON or XML, and returns the converted file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

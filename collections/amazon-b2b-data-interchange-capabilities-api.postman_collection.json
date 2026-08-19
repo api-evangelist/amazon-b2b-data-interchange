@@ -1,0 +1,1618 @@
+{
+  "item": [
+    {
+      "id": "da30b685-7c8c-46e7-9bce-ae8871bb7025",
+      "name": "Capabilities",
+      "description": {
+        "content": "Manage EDI transformation capabilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd3b3cc6-b8a8-41ee-b0e2-80100f2fa9b5",
+          "name": "Create Capability",
+          "request": {
+            "name": "Create Capability",
+            "description": {
+              "content": "Instantiates a capability based on the specified parameters. A trading capability contains the information required to transform incoming EDI documents into JSON or XML outputs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"<string>\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      \"transformerId\": \"<string>\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"<string>\",\n      \"key\": \"<string>\"\n    },\n    {\n      \"bucketName\": \"<string>\",\n      \"key\": \"<string>\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63be722e-8f84-49f1-ae91-8258682fcb74",
+              "name": "Capability created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilityId\": \"string\",\n  \"capabilityArn\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"createdAt\": \"1976-05-08T23:51:01.950Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05d2bb59-f934-4539-9696-fb6f6e3f3ef2",
+              "name": "The input fails to satisfy the constraints specified by an AWS service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf1b6ecc-7492-4779-97c2-67efc70b184b",
+              "name": "You do not have sufficient access to perform this action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3daaa56-4bdc-49f9-86b3-5ca4afc6da98",
+              "name": "A conflict exception is thrown when you attempt to delete a resource that is currently in use.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f61fd64-adef-4594-97c2-ddd8e887cf5f",
+              "name": "The request was denied due to request throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b5095e8-bfb1-4c01-9bf8-658cc3744130",
+              "name": "This exception is thrown when an error occurs in the AWS B2B Data Interchange service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"OUTBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e3b5181-5671-4184-9cef-abd647cca35b",
+          "name": "List Capabilities",
+          "request": {
+            "name": "List Capabilities",
+            "description": {
+              "content": "Lists the capabilities associated with your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26dc79d8-cd29-4508-942c-28436a2590da",
+              "name": "List of capabilities returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilities\": [\n    {\n      \"capabilityId\": \"string\",\n      \"capabilityArn\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"configuration\": {\n        \"edi\": {\n          \"capabilityDirection\": \"OUTBOUND\",\n          \"type\": {\n            \"x12Details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"inputLocation\": {\n            \"bucketName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outputLocation\": {\n            \"bucketName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transformerId\": \"string\"\n        }\n      },\n      \"createdAt\": \"1970-11-26T01:04:26.258Z\",\n      \"modifiedAt\": \"1951-04-01T05:52:49.207Z\"\n    },\n    {\n      \"capabilityId\": \"string\",\n      \"capabilityArn\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"configuration\": {\n        \"edi\": {\n          \"capabilityDirection\": \"OUTBOUND\",\n          \"type\": {\n            \"x12Details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"inputLocation\": {\n            \"bucketName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outputLocation\": {\n            \"bucketName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transformerId\": \"string\"\n        }\n      },\n      \"createdAt\": \"1982-02-02T17:41:10.692Z\",\n      \"modifiedAt\": \"1965-02-05T21:08:22.056Z\"\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3dc20d3-bdc1-42ef-aa98-f793c76a7c37",
+              "name": "You do not have sufficient access to perform this action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93da7418-89b5-4c5f-9cab-ea8448224e04",
+              "name": "The request was denied due to request throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bad09aa-2ee7-496b-90f6-ad3cee853fc5",
+              "name": "This exception is thrown when an error occurs in the AWS B2B Data Interchange service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2c7b79a-d76f-4fe0-a8c3-689dea45fd67",
+          "name": "Get Capability",
+          "request": {
+            "name": "Get Capability",
+            "description": {
+              "content": "Retrieves the details for the specified capability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities",
+                ":capabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "capabilityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "581c9379-e3ee-4b30-aeb4-7da376a38234",
+              "name": "Capability details returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilityId\": \"string\",\n  \"capabilityArn\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"createdAt\": \"2009-10-01T05:28:08.648Z\",\n  \"modifiedAt\": \"2012-12-24T08:22:28.151Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37541480-5125-4a70-a40d-892904c6e5a5",
+              "name": "You do not have sufficient access to perform this action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "419ffd0a-4bbf-4bae-b0bf-dabb0e90356c",
+              "name": "Occurs when the requested resource does not exist, or cannot be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb7b66c9-f33c-4bc0-a847-26752774566e",
+              "name": "The request was denied due to request throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "896bc464-3d01-47fb-ada0-cd81286f0650",
+              "name": "This exception is thrown when an error occurs in the AWS B2B Data Interchange service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fca93d6a-8a37-4422-a3ab-1f660189755d",
+          "name": "Update Capability",
+          "request": {
+            "name": "Update Capability",
+            "description": {
+              "content": "Updates the specified parameters for a capability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities",
+                ":capabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "capabilityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"<string>\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"<string>\",\n        \"key\": \"<string>\"\n      },\n      \"transformerId\": \"<string>\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"<string>\",\n      \"key\": \"<string>\"\n    },\n    {\n      \"bucketName\": \"<string>\",\n      \"key\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4f7ac91-12f0-4dfd-8f47-869c26856409",
+              "name": "Capability updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"capabilityId\": \"string\",\n  \"capabilityArn\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"createdAt\": \"2009-10-01T05:28:08.648Z\",\n  \"modifiedAt\": \"2012-12-24T08:22:28.151Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d40cab79-2007-4107-9bf2-8e935a64847d",
+              "name": "The input fails to satisfy the constraints specified by an AWS service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5c23ff2-1388-4011-8e9d-ca3be20cfd00",
+              "name": "Occurs when the requested resource does not exist, or cannot be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6738d5b1-f882-4769-8ab5-2360859b0cb8",
+              "name": "The request was denied due to request throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8ba1640-aec3-4013-94e2-ea32dadb791c",
+              "name": "This exception is thrown when an error occurs in the AWS B2B Data Interchange service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"configuration\": {\n    \"edi\": {\n      \"capabilityDirection\": \"INBOUND\",\n      \"type\": {\n        \"x12Details\": {\n          \"transactionSet\": \"string\",\n          \"version\": \"string\"\n        }\n      },\n      \"inputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"outputLocation\": {\n        \"bucketName\": \"string\",\n        \"key\": \"string\"\n      },\n      \"transformerId\": \"string\"\n    }\n  },\n  \"instructionsDocuments\": [\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"bucketName\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a1a6990-8172-4f75-b25d-1d16c1ee8b08",
+          "name": "Delete Capability",
+          "request": {
+            "name": "Delete Capability",
+            "description": {
+              "content": "Deletes the specified capability. A capability must not be associated with any partnerships to be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "capabilities",
+                ":capabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "capabilityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14de2bc2-193c-455b-a4a5-f008c6a62781",
+              "name": "Capability deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6bb6f138-ce1c-4516-9f2f-a2cc29c01bd6",
+              "name": "Occurs when the requested resource does not exist, or cannot be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f516c3a-42af-4187-b60e-60bbbc1c6fa3",
+              "name": "A conflict exception is thrown when you attempt to delete a resource that is currently in use.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03d5ec4c-b17a-469c-b1e9-69972eb8b5b3",
+              "name": "The request was denied due to request throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43971dc1-574b-42f0-9ae9-2deaff0da324",
+              "name": "This exception is thrown when an error occurs in the AWS B2B Data Interchange service.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://b2bi.us-east-1.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6f321a5-14e6-4926-b15f-6525a1c0ec88",
+    "name": "AWS B2B Data Interchange Capabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.",
+      "type": "text/plain"
+    }
+  }
+}

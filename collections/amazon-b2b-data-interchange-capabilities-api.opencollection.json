@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS B2B Data Interchange Capabilities API",
+    "version": "2022-06-23"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Capabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Capabilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2bi.us-east-1.amazonaws.com/capabilities",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the capabilities associated with your AWS account."
+        },
+        {
+          "info": {
+            "name": "Create Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/capabilities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Instantiates a capability based on the specified parameters. A trading capability contains the information required to transform incoming EDI documents into JSON or XML outputs."
+        },
+        {
+          "info": {
+            "name": "Get Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2bi.us-east-1.amazonaws.com/capabilities/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the details for the specified capability."
+        },
+        {
+          "info": {
+            "name": "Update Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://b2bi.us-east-1.amazonaws.com/capabilities/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified parameters for a capability."
+        },
+        {
+          "info": {
+            "name": "Delete Capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2bi.us-east-1.amazonaws.com/capabilities/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the specified capability. A capability must not be associated with any partnerships to be deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

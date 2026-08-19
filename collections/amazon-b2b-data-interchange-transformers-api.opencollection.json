@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS B2B Data Interchange Capabilities Transformers API",
+    "version": "2022-06-23"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transformers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Transformers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformers",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the available transformers."
+        },
+        {
+          "info": {
+            "name": "Create Transformer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a transformer. AWS B2B Data Interchange supports X12 EDI documents, allowing you to specify the direction (inbound or outbound), the X12 transaction set and version, and the common data representation format (JSON or XML)."
+        },
+        {
+          "info": {
+            "name": "Get Transformer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformers/:transformerId",
+            "params": [
+              {
+                "name": "transformerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the details for the transformer specified by the transformer ID."
+        },
+        {
+          "info": {
+            "name": "Update Transformer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformers/:transformerId",
+            "params": [
+              {
+                "name": "transformerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified parameters for a transformer."
+        },
+        {
+          "info": {
+            "name": "Delete Transformer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformers/:transformerId",
+            "params": [
+              {
+                "name": "transformerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the specified transformer. A transformer must not be associated with any capabilities to be deleted."
+        },
+        {
+          "info": {
+            "name": "Start Transformer Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformer-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs a job, using a transformer, to parse input EDI (electronic data interchange) file. The input file has a specific file size limit of 250 MB for each supported X12 transaction set."
+        },
+        {
+          "info": {
+            "name": "Get Transformer Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2bi.us-east-1.amazonaws.com/transformer-jobs/:transformerJobId",
+            "params": [
+              {
+                "name": "transformerJobId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transformerId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the details of the transformer run, based on the Transformer job ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
