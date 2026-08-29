@@ -349,7 +349,7 @@ common:
     url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/b2bi
   - type: SDK
     url: https://docs.rs/aws-sdk-b2bi
-  - type: Samples
+  - type: Examples
     url: https://github.com/aws-samples/aws-b2b-data-interchange-toolkit
   - type: CloudFormation
     url: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_B2BI.html
