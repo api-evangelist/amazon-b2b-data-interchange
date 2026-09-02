@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: AWS B2B Data Interchange Capabilities Testing API
   description: AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.
@@ -168,48 +168,11 @@ paths:
           $ref: '#/components/responses/InternalServerException'
 components:
   schemas:
-    TestMappingResponse:
-      type: object
-      properties:
-        mappedFileContent:
-          type: string
-    ConversionSource:
-      type: object
-      properties:
-        fileFormat:
-          type: string
-          enum:
-          - JSON
-          - XML
-        inputFile:
-          type: object
-          properties:
-            fileContent:
-              type: string
-    CreateStarterMappingTemplateRequest:
-      type: object
-      required:
-      - mappingType
-      properties:
-        outputSampleLocation:
-          $ref: '#/components/schemas/S3Location'
-        mappingType:
-          type: string
-          enum:
-          - JSONATA
-          - XSLT
-        templateDetails:
-          type: object
-          properties:
-            x12:
-              $ref: '#/components/schemas/X12Details'
-    GenerateMappingResponse:
+    CreateStarterMappingTemplateResponse:
       type: object
       properties:
         mappingTemplate:
           type: string
-        mappingAccuracy:
-          type: number
     ErrorResponse:
       type: object
       properties:
@@ -217,6 +180,20 @@ components:
           type: string
         code:
           type: string
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    X12Details:
+      type: object
+      properties:
+        transactionSet:
+          type: string
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
     TestConversionResponse:
       type: object
       properties:
@@ -243,37 +220,6 @@ components:
           - NOT_USED
         ediType:
           $ref: '#/components/schemas/EdiType'
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    TestConversionRequest:
-      type: object
-      required:
-      - source
-      - target
-      properties:
-        source:
-          $ref: '#/components/schemas/ConversionSource'
-        target:
-          $ref: '#/components/schemas/ConversionTarget'
-    X12Details:
-      type: object
-      properties:
-        transactionSet:
-          type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
-          type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
-    TestParsingResponse:
-      type: object
-      properties:
-        parsedFileContent:
-          type: string
     GenerateMappingRequest:
       type: object
       required:
@@ -290,11 +236,45 @@ components:
           enum:
           - JSONATA
           - XSLT
-    EdiType:
+    TestConversionRequest:
+      type: object
+      required:
+      - source
+      - target
+      properties:
+        source:
+          $ref: '#/components/schemas/ConversionSource'
+        target:
+          $ref: '#/components/schemas/ConversionTarget'
+    CreateStarterMappingTemplateRequest:
+      type: object
+      required:
+      - mappingType
+      properties:
+        outputSampleLocation:
+          $ref: '#/components/schemas/S3Location'
+        mappingType:
+          type: string
+          enum:
+          - JSONATA
+          - XSLT
+        templateDetails:
+          type: object
+          properties:
+            x12:
+              $ref: '#/components/schemas/X12Details'
+    TestParsingResponse:
       type: object
       properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
+        parsedFileContent:
+          type: string
+    S3Location:
+      type: object
+      properties:
+        bucketName:
+          type: string
+        key:
+          type: string
     TestMappingRequest:
       type: object
       required:
@@ -312,6 +292,18 @@ components:
           - XML
           - JSON
           - NOT_USED
+    TestMappingResponse:
+      type: object
+      properties:
+        mappedFileContent:
+          type: string
+    GenerateMappingResponse:
+      type: object
+      properties:
+        mappingTemplate:
+          type: string
+        mappingAccuracy:
+          type: number
     ConversionTarget:
       type: object
       properties:
@@ -329,20 +321,22 @@ components:
           properties:
             fileContent:
               type: string
-    CreateStarterMappingTemplateResponse:
+    ConversionSource:
       type: object
       properties:
-        mappingTemplate:
+        fileFormat:
           type: string
+          enum:
+          - JSON
+          - XML
+        inputFile:
+          type: object
+          properties:
+            fileContent:
+              type: string
   responses:
     ResourceNotFoundException:
       description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
       content:
         application/json:
           schema:
@@ -355,6 +349,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     AccessDeniedException:
       description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
       content:
         application/json:
           schema:

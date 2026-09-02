@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: AWS B2B Data Interchange Capabilities API
   description: AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.
@@ -165,68 +165,18 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerException'
 components:
-  responses:
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerException:
-      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ConflictException:
-      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    X12Details:
+    UpdateCapabilityRequest:
       type: object
       properties:
-        transactionSet:
+        name:
           type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
-          type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
-    CapabilityConfiguration:
-      type: object
-      properties:
-        edi:
-          $ref: '#/components/schemas/EdiConfiguration'
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
+        configuration:
+          $ref: '#/components/schemas/CapabilityConfiguration'
+        instructionsDocuments:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3Location'
     ListCapabilitiesResponse:
       type: object
       properties:
@@ -236,13 +186,22 @@ components:
             $ref: '#/components/schemas/CapabilitySummary'
         nextToken:
           type: string
-    ErrorResponse:
+    CreateCapabilityResponse:
       type: object
       properties:
-        message:
+        capabilityId:
           type: string
-        code:
+        capabilityArn:
           type: string
+        name:
+          type: string
+        type:
+          type: string
+        configuration:
+          $ref: '#/components/schemas/CapabilityConfiguration'
+        createdAt:
+          type: string
+          format: date-time
     CreateCapabilityRequest:
       type: object
       required:
@@ -268,33 +227,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
-    UpdateCapabilityRequest:
+    S3Location:
       type: object
       properties:
-        name:
+        bucketName:
           type: string
-        configuration:
-          $ref: '#/components/schemas/CapabilityConfiguration'
-        instructionsDocuments:
-          type: array
-          items:
-            $ref: '#/components/schemas/S3Location'
-    CreateCapabilityResponse:
+        key:
+          type: string
+    Tag:
       type: object
       properties:
-        capabilityId:
+        key:
           type: string
-        capabilityArn:
+        value:
           type: string
-        name:
+      required:
+      - key
+      - value
+    ErrorResponse:
+      type: object
+      properties:
+        message:
           type: string
-        type:
+        code:
           type: string
-        configuration:
-          $ref: '#/components/schemas/CapabilityConfiguration'
-        createdAt:
-          type: string
-          format: date-time
     EdiConfiguration:
       type: object
       properties:
@@ -311,18 +267,6 @@ components:
           $ref: '#/components/schemas/S3Location'
         transformerId:
           type: string
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    EdiType:
-      type: object
-      properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
     CapabilitySummary:
       type: object
       properties:
@@ -342,6 +286,62 @@ components:
         modifiedAt:
           type: string
           format: date-time
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    X12Details:
+      type: object
+      properties:
+        transactionSet:
+          type: string
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+    CapabilityConfiguration:
+      type: object
+      properties:
+        edi:
+          $ref: '#/components/schemas/EdiConfiguration'
+  responses:
+    ConflictException:
+      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     aws_iam:
       type: apiKey
