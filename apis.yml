@@ -1,13 +1,10 @@
 aid: amazon-b2b-data-interchange
 name: Amazon B2B Data Interchange
-description: >-
-  AWS B2B Data Interchange is a fully managed service that automates the
-  transformation and exchange of electronic data interchange (EDI) documents
-  at cloud scale. It enables businesses to onboard trading partners, transform
-  X12 EDI documents to and from JSON or XML, and manage capabilities,
-  profiles, and partnerships with pay-as-you-go pricing. The service supports
-  supply chain, healthcare, and financial services workflows and leverages
-  Amazon Bedrock for AI-assisted mapping generation.
+description: AWS B2B Data Interchange is a fully managed service that automates the transformation and
+  exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard
+  trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles,
+  and partnerships with pay-as-you-go pricing. The service supports supply chain, healthcare, and financial
+  services workflows and leverages Amazon Bedrock for AI-assisted mapping generation.
 type: Index
 deliveryModel:
   model: saas
@@ -36,27 +33,26 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-b2b-data-interchange.png
 tags:
-  - EDI
-  - B2B
-  - Data Interchange
-  - Supply Chain
-  - Healthcare
-  - Financial-Services
-  - Amazon Web Services
-  - AWS
+- EDI
+- B2B
+- Data Interchange
+- Supply Chain
+- Healthcare
+- Financial-Services
+- Amazon Web Services
+- AWS
 tags_raw:
-  - EDI
-  - B2B
-  - Data Interchange
-  - Supply Chain
-  - Healthcare
-  - Financial Services
-  - Amazon Web Services
-  - AWS
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
+- EDI
+- B2B
+- Data Interchange
+- Supply Chain
+- Healthcare
+- Financial Services
+- Amazon Web Services
+- AWS
+url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-06-20'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: amazon-b2b-data-interchange:amazon-b2b-data-interchange-capabilities-api
@@ -74,29 +70,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -118,29 +106,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -162,29 +142,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -206,29 +178,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -250,29 +214,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -294,29 +250,21 @@ apis:
   - type: Documentation
     url: https://docs.aws.amazon.com/b2bi/latest/userguide/what-is-b2bi.html
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/profile.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/partnership.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-schema/transformer.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-structure/b2bi-resource-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/json-ld/context.jsonld
   - type: SpectralRuleset
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/spectral/ruleset.yml
   - type: Capabilities
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/capabilities/capabilities.yml
   - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
+    url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/vocabulary/vocabulary.yml
   - type: Conformance
     url: conformance/amazon-b2b-data-interchange-conformance.yml
   - type: ErrorCatalog
@@ -324,45 +272,50 @@ apis:
   - type: Lifecycle
     url: lifecycle/amazon-b2b-data-interchange-lifecycle.yml
 common:
-  - type: X-MCPServerCandidate
-    url: mcp/amazon-b2b-data-interchange-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-  - type: Overlay
-    url: overlays/amazon-b2b-data-interchange-aws-b2b-data-interchange-api-overlay.yaml
-  - type: AgenticAccess
-    url: agentic-access/amazon-b2b-data-interchange-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-b2b-data-interchange-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-b2b-data-interchange-domain-security.yml
-  - type: Authentication
-    url: authentication/amazon-b2b-data-interchange-authentication.yml
-  - type: Packages
-    url: packages/amazon-b2b-data-interchange-packages.yml
-  - type: WellKnown
-    url: well-known/amazon-b2b-data-interchange-well-known.yml
-  - type: LLMsTxt
-    url: llms/amazon-b2b-data-interchange-llms.txt
-  - type: CLI
-    url: https://docs.aws.amazon.com/cli/latest/reference/b2bi/
-  - type: SDK
-    url: https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-b2bi
-  - type: SDK
-    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/b2bi
-  - type: SDK
-    url: https://docs.rs/aws-sdk-b2bi
-  - type: Examples
-    url: https://github.com/aws-samples/aws-b2b-data-interchange-toolkit
-  - type: CloudFormation
-    url: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_B2BI.html
-  - type: Pricing
-    url: https://aws.amazon.com/b2b-data-interchange/pricing/
-  - type: TermsOfService
-    url: https://aws.amazon.com/service-terms/
-  - type: PrivacyPolicy
-    url: https://aws.amazon.com/privacy/
+- type: Website
+  url: https://amazon.com
+- type: X-MCPServerCandidate
+  url: mcp/amazon-b2b-data-interchange-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
+- type: Overlay
+  url: overlays/amazon-b2b-data-interchange-aws-b2b-data-interchange-api-overlay.yaml
+- type: AgenticAccess
+  url: agentic-access/amazon-b2b-data-interchange-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-b2b-data-interchange-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-b2b-data-interchange-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-b2b-data-interchange-authentication.yml
+- type: Packages
+  url: packages/amazon-b2b-data-interchange-packages.yml
+- type: WellKnown
+  url: well-known/amazon-b2b-data-interchange-well-known.yml
+- type: LLMsTxt
+  url: llms/amazon-b2b-data-interchange-llms.txt
+- type: CLI
+  url: https://docs.aws.amazon.com/cli/latest/reference/b2bi/
+- type: SDK
+  url: https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-b2bi
+- type: SDK
+  url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/b2bi
+- type: SDK
+  url: https://docs.rs/aws-sdk-b2bi
+- type: Examples
+  url: https://github.com/aws-samples/aws-b2b-data-interchange-toolkit
+- type: CloudFormation
+  url: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_B2BI.html
+- type: Pricing
+  url: https://aws.amazon.com/b2b-data-interchange/pricing/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-parent: aws
 x-relationship: product
