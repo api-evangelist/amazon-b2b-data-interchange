@@ -166,17 +166,25 @@ paths:
           $ref: '#/components/responses/InternalServerException'
 components:
   schemas:
-    UpdateCapabilityRequest:
+    X12Details:
       type: object
       properties:
-        name:
+        transactionSet:
           type: string
-        configuration:
-          $ref: '#/components/schemas/CapabilityConfiguration'
-        instructionsDocuments:
-          type: array
-          items:
-            $ref: '#/components/schemas/S3Location'
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
     ListCapabilitiesResponse:
       type: object
       properties:
@@ -186,22 +194,6 @@ components:
             $ref: '#/components/schemas/CapabilitySummary'
         nextToken:
           type: string
-    CreateCapabilityResponse:
-      type: object
-      properties:
-        capabilityId:
-          type: string
-        capabilityArn:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        configuration:
-          $ref: '#/components/schemas/CapabilityConfiguration'
-        createdAt:
-          type: string
-          format: date-time
     CreateCapabilityRequest:
       type: object
       required:
@@ -227,23 +219,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
     ErrorResponse:
       type: object
       properties:
@@ -251,22 +226,50 @@ components:
           type: string
         code:
           type: string
-    EdiConfiguration:
+    S3Location:
       type: object
       properties:
-        capabilityDirection:
+        bucketName:
           type: string
-          enum:
-          - INBOUND
-          - OUTBOUND
+        key:
+          type: string
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    CapabilityConfiguration:
+      type: object
+      properties:
+        edi:
+          $ref: '#/components/schemas/EdiConfiguration'
+    CreateCapabilityResponse:
+      type: object
+      properties:
+        capabilityId:
+          type: string
+        capabilityArn:
+          type: string
+        name:
+          type: string
         type:
-          $ref: '#/components/schemas/EdiType'
-        inputLocation:
-          $ref: '#/components/schemas/S3Location'
-        outputLocation:
-          $ref: '#/components/schemas/S3Location'
-        transformerId:
           type: string
+        configuration:
+          $ref: '#/components/schemas/CapabilityConfiguration'
+        createdAt:
+          type: string
+          format: date-time
+    UpdateCapabilityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        configuration:
+          $ref: '#/components/schemas/CapabilityConfiguration'
+        instructionsDocuments:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3Location'
     CapabilitySummary:
       type: object
       properties:
@@ -286,40 +289,25 @@ components:
         modifiedAt:
           type: string
           format: date-time
-    EdiType:
+    EdiConfiguration:
       type: object
       properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
-    X12Details:
-      type: object
-      properties:
-        transactionSet:
+        capabilityDirection:
           type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
+          enum:
+          - INBOUND
+          - OUTBOUND
+        type:
+          $ref: '#/components/schemas/EdiType'
+        inputLocation:
+          $ref: '#/components/schemas/S3Location'
+        outputLocation:
+          $ref: '#/components/schemas/S3Location'
+        transformerId:
           type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
-    CapabilityConfiguration:
-      type: object
-      properties:
-        edi:
-          $ref: '#/components/schemas/EdiConfiguration'
   responses:
-    ConflictException:
-      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ResourceNotFoundException:
       description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerException:
-      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
       content:
         application/json:
           schema:
@@ -330,14 +318,26 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     AccessDeniedException:
       description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ConflictException:
+      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
       content:
         application/json:
           schema:

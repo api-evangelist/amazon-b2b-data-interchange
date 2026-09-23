@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: AWS B2B Data Interchange Capabilities Testing API
+  title: AWS B2B Data Interchange Testing API
   description: AWS B2B Data Interchange automates the transformation and exchange of electronic data interchange (EDI) documents at cloud scale. It enables businesses to onboard trading partners, transform X12 EDI documents to and from JSON or XML, and manage capabilities, profiles, partnerships, and transformers with pay-as-you-go pricing.
   version: '2022-06-23'
   contact:
@@ -167,143 +167,38 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerException'
 components:
+  responses:
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    CreateStarterMappingTemplateResponse:
-      type: object
-      properties:
-        mappingTemplate:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    EdiType:
-      type: object
-      properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
-    X12Details:
-      type: object
-      properties:
-        transactionSet:
-          type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
-          type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
-    TestConversionResponse:
-      type: object
-      properties:
-        convertedFileContent:
-          type: string
-        validationMessages:
-          type: array
-          items:
-            type: string
-    TestParsingRequest:
-      type: object
-      required:
-      - inputFile
-      - fileFormat
-      - ediType
-      properties:
-        inputFile:
-          $ref: '#/components/schemas/S3Location'
-        fileFormat:
-          type: string
-          enum:
-          - XML
-          - JSON
-          - NOT_USED
-        ediType:
-          $ref: '#/components/schemas/EdiType'
-    GenerateMappingRequest:
-      type: object
-      required:
-      - inputFileContent
-      - outputFileContent
-      - mappingType
-      properties:
-        inputFileContent:
-          type: string
-        outputFileContent:
-          type: string
-        mappingType:
-          type: string
-          enum:
-          - JSONATA
-          - XSLT
-    TestConversionRequest:
-      type: object
-      required:
-      - source
-      - target
-      properties:
-        source:
-          $ref: '#/components/schemas/ConversionSource'
-        target:
-          $ref: '#/components/schemas/ConversionTarget'
-    CreateStarterMappingTemplateRequest:
-      type: object
-      required:
-      - mappingType
-      properties:
-        outputSampleLocation:
-          $ref: '#/components/schemas/S3Location'
-        mappingType:
-          type: string
-          enum:
-          - JSONATA
-          - XSLT
-        templateDetails:
-          type: object
-          properties:
-            x12:
-              $ref: '#/components/schemas/X12Details'
-    TestParsingResponse:
-      type: object
-      properties:
-        parsedFileContent:
-          type: string
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    TestMappingRequest:
-      type: object
-      required:
-      - inputFileContent
-      - mappingTemplate
-      - fileFormat
-      properties:
-        inputFileContent:
-          type: string
-        mappingTemplate:
-          type: string
-        fileFormat:
-          type: string
-          enum:
-          - XML
-          - JSON
-          - NOT_USED
-    TestMappingResponse:
-      type: object
-      properties:
-        mappedFileContent:
-          type: string
-    GenerateMappingResponse:
-      type: object
-      properties:
-        mappingTemplate:
-          type: string
-        mappingAccuracy:
-          type: number
     ConversionTarget:
       type: object
       properties:
@@ -321,6 +216,90 @@ components:
           properties:
             fileContent:
               type: string
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    TestMappingRequest:
+      type: object
+      required:
+      - inputFileContent
+      - mappingTemplate
+      - fileFormat
+      properties:
+        inputFileContent:
+          type: string
+        mappingTemplate:
+          type: string
+        fileFormat:
+          type: string
+          enum:
+          - XML
+          - JSON
+          - NOT_USED
+    GenerateMappingRequest:
+      type: object
+      required:
+      - inputFileContent
+      - outputFileContent
+      - mappingType
+      properties:
+        inputFileContent:
+          type: string
+        outputFileContent:
+          type: string
+        mappingType:
+          type: string
+          enum:
+          - JSONATA
+          - XSLT
+    S3Location:
+      type: object
+      properties:
+        bucketName:
+          type: string
+        key:
+          type: string
+    TestParsingRequest:
+      type: object
+      required:
+      - inputFile
+      - fileFormat
+      - ediType
+      properties:
+        inputFile:
+          $ref: '#/components/schemas/S3Location'
+        fileFormat:
+          type: string
+          enum:
+          - XML
+          - JSON
+          - NOT_USED
+        ediType:
+          $ref: '#/components/schemas/EdiType'
+    TestParsingResponse:
+      type: object
+      properties:
+        parsedFileContent:
+          type: string
+    CreateStarterMappingTemplateRequest:
+      type: object
+      required:
+      - mappingType
+      properties:
+        outputSampleLocation:
+          $ref: '#/components/schemas/S3Location'
+        mappingType:
+          type: string
+          enum:
+          - JSONATA
+          - XSLT
+        templateDetails:
+          type: object
+          properties:
+            x12:
+              $ref: '#/components/schemas/X12Details'
     ConversionSource:
       type: object
       properties:
@@ -334,37 +313,58 @@ components:
           properties:
             fileContent:
               type: string
-  responses:
-    ResourceNotFoundException:
-      description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerException:
-      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    GenerateMappingResponse:
+      type: object
+      properties:
+        mappingTemplate:
+          type: string
+        mappingAccuracy:
+          type: number
+    CreateStarterMappingTemplateResponse:
+      type: object
+      properties:
+        mappingTemplate:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    TestConversionResponse:
+      type: object
+      properties:
+        convertedFileContent:
+          type: string
+        validationMessages:
+          type: array
+          items:
+            type: string
+    TestMappingResponse:
+      type: object
+      properties:
+        mappedFileContent:
+          type: string
+    TestConversionRequest:
+      type: object
+      required:
+      - source
+      - target
+      properties:
+        source:
+          $ref: '#/components/schemas/ConversionSource'
+        target:
+          $ref: '#/components/schemas/ConversionTarget'
+    X12Details:
+      type: object
+      properties:
+        transactionSet:
+          type: string
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
   securitySchemes:
     aws_iam:
       type: apiKey

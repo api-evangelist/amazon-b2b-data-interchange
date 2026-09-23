@@ -1,12 +1,7 @@
 {
   "provider": "amazon-b2b-data-interchange",
   "sources": [
-    "amazon-b2b-data-interchange-capabilities-api-openapi.yml",
-    "amazon-b2b-data-interchange-partnerships-api-openapi.yml",
-    "amazon-b2b-data-interchange-profiles-api-openapi.yml",
-    "amazon-b2b-data-interchange-tags-api-openapi.yml",
-    "amazon-b2b-data-interchange-testing-api-openapi.yml",
-    "amazon-b2b-data-interchange-transformers-api-openapi.yml"
+    "_original/aws-b2b-data-interchange-api-openapi.yml"
   ],
   "outputs": [
     "amazon-b2b-data-interchange-capabilities-api-openapi.yml",
@@ -20,7 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "aws-b2b-data-interchange-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-b2b-data-interchange-capabilities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-b2b-data-interchange-partnerships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-b2b-data-interchange-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-b2b-data-interchange-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-b2b-data-interchange-testing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-b2b-data-interchange-transformers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
