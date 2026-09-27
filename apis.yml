@@ -38,7 +38,7 @@ tags:
 - Data Interchange
 - Supply Chain
 - Healthcare
-- Financial-Services
+- Financial Services
 - Amazon Web Services
 - AWS
 tags_raw:
@@ -50,6 +50,7 @@ tags_raw:
 - Financial Services
 - Amazon Web Services
 - AWS
+- Financial-Services
 url: https://raw.githubusercontent.com/api-evangelist/amazon-b2b-data-interchange/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-09-16'
@@ -273,7 +274,7 @@ apis:
     url: lifecycle/amazon-b2b-data-interchange-lifecycle.yml
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/b2b-data-interchange/
 - type: X-MCPServerCandidate
   url: mcp/amazon-b2b-data-interchange-mcp.yml
   note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
@@ -317,5 +318,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

@@ -166,32 +166,8 @@ paths:
           $ref: '#/components/responses/InternalServerException'
 components:
   responses:
-    ResourceNotFoundException:
-      description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerException:
-      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     AccessDeniedException:
       description: You do not have sufficient access to perform this action.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
       content:
         application/json:
           schema:
@@ -202,60 +178,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
-    CreateProfileRequest:
-      type: object
-      required:
-      - name
-      - phone
-      - businessName
-      - logging
-      properties:
-        name:
-          type: string
-        phone:
-          type: string
-        email:
-          type: string
-        businessName:
-          type: string
-        logging:
-          type: string
-          enum:
-          - ENABLED
-          - DISABLED
-        clientToken:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    ListProfilesResponse:
-      type: object
-      properties:
-        profiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProfileSummary'
-        nextToken:
-          type: string
     ProfileSummary:
       type: object
       properties:
@@ -303,6 +250,59 @@ components:
         createdAt:
           type: string
           format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    ListProfilesResponse:
+      type: object
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileSummary'
+        nextToken:
+          type: string
+    CreateProfileRequest:
+      type: object
+      required:
+      - name
+      - phone
+      - businessName
+      - logging
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        businessName:
+          type: string
+        logging:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+        clientToken:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
     UpdateProfileRequest:
       type: object
       properties:

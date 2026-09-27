@@ -228,49 +228,73 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerException'
 components:
+  responses:
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ConflictException:
+      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ThrottlingException:
+      description: The request was denied due to request throttling.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ResourceNotFoundException:
+      description: Occurs when the requested resource does not exist, or cannot be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Tag:
+    X12Details:
       type: object
       properties:
-        key:
+        transactionSet:
           type: string
-        value:
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
           type: string
-      required:
-      - key
-      - value
-    UpdateTransformerRequest:
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+    StartTransformerJobResponse:
       type: object
       properties:
-        name:
+        transformerJobId:
           type: string
+    GetTransformerJobResponse:
+      type: object
+      properties:
         status:
           type: string
-        mappingTemplate:
+          enum:
+          - running
+          - succeeded
+          - failed
+        outputFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3Location'
+        message:
           type: string
-        ediType:
-          $ref: '#/components/schemas/EdiType'
-        fileFormat:
-          type: string
-    EdiType:
-      type: object
-      properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
-    CreateTransformerResponse:
-      type: object
-      properties:
-        transformerId:
-          type: string
-        transformerArn:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
     CreateTransformerRequest:
       type: object
       required:
@@ -294,28 +318,6 @@ components:
           - XML
           - JSON
           - NOT_USED
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    GetTransformerJobResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - running
-          - succeeded
-          - failed
-        outputFiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/S3Location'
-        message:
-          type: string
     ErrorResponse:
       type: object
       properties:
@@ -323,29 +325,22 @@ components:
           type: string
         code:
           type: string
-    StartTransformerJobRequest:
+    Tag:
       type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
       required:
-      - inputFile
-      - outputLocation
-      - transformerId
-      properties:
-        inputFile:
-          $ref: '#/components/schemas/S3Location'
-        outputLocation:
-          $ref: '#/components/schemas/S3Location'
-        transformerId:
-          type: string
-        clientToken:
-          type: string
-    ListTransformersResponse:
+      - key
+      - value
+    S3Location:
       type: object
       properties:
-        transformers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransformerSummary'
-        nextToken:
+        bucketName:
+          type: string
+        key:
           type: string
     TransformerSummary:
       type: object
@@ -364,57 +359,62 @@ components:
         modifiedAt:
           type: string
           format: date-time
-    StartTransformerJobResponse:
+    ListTransformersResponse:
       type: object
       properties:
-        transformerJobId:
+        transformers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransformerSummary'
+        nextToken:
           type: string
-    X12Details:
+    EdiType:
       type: object
       properties:
-        transactionSet:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    UpdateTransformerRequest:
+      type: object
+      properties:
+        name:
           type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
+        status:
           type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
-  responses:
-    InternalServerException:
-      description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ConflictException:
-      description: A conflict exception is thrown when you attempt to delete a resource that is currently in use.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ResourceNotFoundException:
-      description: Occurs when the requested resource does not exist, or cannot be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        mappingTemplate:
+          type: string
+        ediType:
+          $ref: '#/components/schemas/EdiType'
+        fileFormat:
+          type: string
+    StartTransformerJobRequest:
+      type: object
+      required:
+      - inputFile
+      - outputLocation
+      - transformerId
+      properties:
+        inputFile:
+          $ref: '#/components/schemas/S3Location'
+        outputLocation:
+          $ref: '#/components/schemas/S3Location'
+        transformerId:
+          type: string
+        clientToken:
+          type: string
+    CreateTransformerResponse:
+      type: object
+      properties:
+        transformerId:
+          type: string
+        transformerArn:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
   securitySchemes:
     aws_iam:
       type: apiKey
