@@ -168,25 +168,28 @@ paths:
           $ref: '#/components/responses/InternalServerException'
 components:
   schemas:
-    EdiType:
+    TestConversionResponse:
       type: object
       properties:
-        x12Details:
-          $ref: '#/components/schemas/X12Details'
-    TestParsingResponse:
+        convertedFileContent:
+          type: string
+        validationMessages:
+          type: array
+          items:
+            type: string
+    ConversionSource:
       type: object
       properties:
-        parsedFileContent:
+        fileFormat:
           type: string
-    X12Details:
-      type: object
-      properties:
-        transactionSet:
-          type: string
-          description: X12 transaction set identifier (e.g., X12_110, X12_850)
-        version:
-          type: string
-          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+          enum:
+          - JSON
+          - XML
+        inputFile:
+          type: object
+          properties:
+            fileContent:
+              type: string
     ConversionTarget:
       type: object
       properties:
@@ -204,119 +207,10 @@ components:
           properties:
             fileContent:
               type: string
-    TestParsingRequest:
-      type: object
-      required:
-      - inputFile
-      - fileFormat
-      - ediType
-      properties:
-        inputFile:
-          $ref: '#/components/schemas/S3Location'
-        fileFormat:
-          type: string
-          enum:
-          - XML
-          - JSON
-          - NOT_USED
-        ediType:
-          $ref: '#/components/schemas/EdiType'
-    TestConversionResponse:
+    TestParsingResponse:
       type: object
       properties:
-        convertedFileContent:
-          type: string
-        validationMessages:
-          type: array
-          items:
-            type: string
-    TestConversionRequest:
-      type: object
-      required:
-      - source
-      - target
-      properties:
-        source:
-          $ref: '#/components/schemas/ConversionSource'
-        target:
-          $ref: '#/components/schemas/ConversionTarget'
-    ConversionSource:
-      type: object
-      properties:
-        fileFormat:
-          type: string
-          enum:
-          - JSON
-          - XML
-        inputFile:
-          type: object
-          properties:
-            fileContent:
-              type: string
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    GenerateMappingResponse:
-      type: object
-      properties:
-        mappingTemplate:
-          type: string
-        mappingAccuracy:
-          type: number
-    CreateStarterMappingTemplateResponse:
-      type: object
-      properties:
-        mappingTemplate:
-          type: string
-    S3Location:
-      type: object
-      properties:
-        bucketName:
-          type: string
-        key:
-          type: string
-    TestMappingRequest:
-      type: object
-      required:
-      - inputFileContent
-      - mappingTemplate
-      - fileFormat
-      properties:
-        inputFileContent:
-          type: string
-        mappingTemplate:
-          type: string
-        fileFormat:
-          type: string
-          enum:
-          - XML
-          - JSON
-          - NOT_USED
-    CreateStarterMappingTemplateRequest:
-      type: object
-      required:
-      - mappingType
-      properties:
-        outputSampleLocation:
-          $ref: '#/components/schemas/S3Location'
-        mappingType:
-          type: string
-          enum:
-          - JSONATA
-          - XSLT
-        templateDetails:
-          type: object
-          properties:
-            x12:
-              $ref: '#/components/schemas/X12Details'
-    TestMappingResponse:
-      type: object
-      properties:
-        mappedFileContent:
+        parsedFileContent:
           type: string
     GenerateMappingRequest:
       type: object
@@ -334,13 +228,113 @@ components:
           enum:
           - JSONATA
           - XSLT
+    X12Details:
+      type: object
+      properties:
+        transactionSet:
+          type: string
+          description: X12 transaction set identifier (e.g., X12_110, X12_850)
+        version:
+          type: string
+          description: X12 version (e.g., VERSION_4010, VERSION_5010)
+    CreateStarterMappingTemplateResponse:
+      type: object
+      properties:
+        mappingTemplate:
+          type: string
+    TestParsingRequest:
+      type: object
+      required:
+      - inputFile
+      - fileFormat
+      - ediType
+      properties:
+        inputFile:
+          $ref: '#/components/schemas/S3Location'
+        fileFormat:
+          type: string
+          enum:
+          - XML
+          - JSON
+          - NOT_USED
+        ediType:
+          $ref: '#/components/schemas/EdiType'
+    EdiType:
+      type: object
+      properties:
+        x12Details:
+          $ref: '#/components/schemas/X12Details'
+    TestMappingResponse:
+      type: object
+      properties:
+        mappedFileContent:
+          type: string
+    S3Location:
+      type: object
+      properties:
+        bucketName:
+          type: string
+        key:
+          type: string
+    GenerateMappingResponse:
+      type: object
+      properties:
+        mappingTemplate:
+          type: string
+        mappingAccuracy:
+          type: number
+    CreateStarterMappingTemplateRequest:
+      type: object
+      required:
+      - mappingType
+      properties:
+        outputSampleLocation:
+          $ref: '#/components/schemas/S3Location'
+        mappingType:
+          type: string
+          enum:
+          - JSONATA
+          - XSLT
+        templateDetails:
+          type: object
+          properties:
+            x12:
+              $ref: '#/components/schemas/X12Details'
+    TestMappingRequest:
+      type: object
+      required:
+      - inputFileContent
+      - mappingTemplate
+      - fileFormat
+      properties:
+        inputFileContent:
+          type: string
+        mappingTemplate:
+          type: string
+        fileFormat:
+          type: string
+          enum:
+          - XML
+          - JSON
+          - NOT_USED
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    TestConversionRequest:
+      type: object
+      required:
+      - source
+      - target
+      properties:
+        source:
+          $ref: '#/components/schemas/ConversionSource'
+        target:
+          $ref: '#/components/schemas/ConversionTarget'
   responses:
-    ValidationException:
-      description: The input fails to satisfy the constraints specified by an AWS service.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     InternalServerException:
       description: This exception is thrown when an error occurs in the AWS B2B Data Interchange service.
       content:
@@ -353,14 +347,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    AccessDeniedException:
-      description: You do not have sufficient access to perform this action.
+    ThrottlingException:
+      description: The request was denied due to request throttling.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ThrottlingException:
-      description: The request was denied due to request throttling.
+    ValidationException:
+      description: The input fails to satisfy the constraints specified by an AWS service.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AccessDeniedException:
+      description: You do not have sufficient access to perform this action.
       content:
         application/json:
           schema:
